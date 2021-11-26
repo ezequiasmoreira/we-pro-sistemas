@@ -1,0 +1,33 @@
+<span class="text-center login-title"><b>Cadastro de clientes</b></span>
+<br>
+
+<form novalidate name="formulario" >  
+    <p class="alert alert-danger mensagem-posicao" ng-if="mensagem.length" >{{mensagem}}</p>
+    <p class="mensagem-erro alert alert-info mensagem-posicao" ng-show="mensagemSucesso.length" >{{mensagemSucesso}}</p>   
+    <div class="col-md-12">        
+        <button type="button" ng-click="cadastrarCliente(cliente)" class="btn btn-primary botao-salvar">Salvar</button>
+        <button type="button" ng-click="novo(cliente)" class="btn btn-primary botao-novo">Novo</button>
+        <button type="button" ng-click="pesquisarClientes()" data-target="#modalPesquisaCliente" data-toggle="modal" class="btn btn-success botao-pesquisar">Pesquisar</button>
+    </div> 
+    <div class="form-group col-md-6">
+        <label for="nome">Nome</label>
+        <input type="text" ng-model="cliente.nome" class="form-control" id="nome" >
+    
+        <label for="sobrenome">Sobrenome</label>
+        <input type="text" ng-model="cliente.sobrenome"class="form-control" id="sobrenome" >
+
+        <label for="cpfCnpj">Cpf/Cnpj</label>
+        <input type="text" maxlength="14" ng-model="cliente.cpfCnpj" class="form-control" id="cpfCnpj" >        
+    </div>
+
+    <div class="form-group col-md-6">
+        <telefone-input></telefone-input>
+        <endereco-input></endereco-input>
+    </div>     
+</form>
+
+<telefone-modal></telefone-modal>
+<endereco-modal></endereco-modal>
+<cliente-listagem></cliente-listagem>
+<br>
+  

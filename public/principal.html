@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="projetoTecnico">
+    <head >
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Projeto técnico</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/index.css">
+        <script src="js/lib/angular.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/state.js"></script>
+        <script src="js/lib/angular-route.min.js"></script>
+        <script src="js/lib/angular-ui-router.js"></script>       
+        
+        <script src="js/specs/util-factory-spec.js"></script>
+
+        <script src="cliente/cliente-directive.js"></script>
+        <script src="cliente/cliente-factory-spec.js"></script>
+        <script src="fornecedor/fornecedor-factory-spec.js"></script>
+        <script src="js/directives/projeto-tecnico-diretivas.js"></script>
+        
+
+        <script src="js/config/config-url.js"></script>
+        <script src="js/lib/angular-route.min.js"></script>
+        <script src="js/controllers/projeto-tecnico-controller.js"></script>
+        <script src="cliente/cliente-controller.js"></script>
+        <script src="fornecedor/fornecedor-controller.js"></script>
+        <script src="cliente/cliente-factory-service.js"></script>
+        <script src="fornecedor/fornecedor-factory-service.js"></script>
+        
+        <script src="bower_components/componentes/dist/componentes.min.js"></script>
+        <script src="bower_components/core-telefones/dist/core-telefones.js"></script>
+        <script src="bower_components/core-enderecos/dist/core-enderecos.js"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="//unpkg.com/@uirouter/angularjs@1.0.7/release/angular-ui-router.min.js"></script>
+    </head>
+<body ng-controller="projetoTecnicoController">
+    <nav class="navbar navbar-inverse">
+      <div class="float-sm-right botao-flutuante" ng-click="sair()" >Sair.</div>
+        <div class="container-fluid ">
+         
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/principal.html#/inicio">Projeto técnico</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle cursor" data-toggle="dropdown"  >Cadastro
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a ui-sref="cliente-cadastro" ui-sref-active="active">Cliente</a></li>
+                <li><a ui-sref="fornecedor-cadastro"  ui-sref-active="active">Fornecedor</a></li>
+              </ul>
+            </li>
+          </ul>        
+        </div>       
+      </nav>
+        <div class="container">
+            <ng-view></ng-view> 
+        </div>        
+    </body>
+</html>

@@ -1,0 +1,86 @@
+<span class="text-center login-title"><b>Cadastro de fornecedores</b></span>
+<br>
+
+<form novalidate name="formulario" >      
+    <p class="alert alert-danger mensagem-posicao" ng-if="mensagem.length" >{{mensagem}}</p>
+    <p class="mensagem-erro alert alert-info mensagem-posicao" ng-show="mensagemSucesso.length" >{{mensagemSucesso}}</p>   
+    <div class="col-md-12">        
+        <button type="button" ng-click="cadastrarFornecedor(fornecedor)" class="btn btn-primary botao-salvar">Salvar</button>
+        <button type="button" ng-click="novo(fornecedor)" class="btn btn-primary botao-novo">Novo</button>
+        <button type="button" ng-click="pesquisarFornecedores()" data-target="#modalPesquisaFornecedor" data-toggle="modal" class="btn btn-success botao-pesquisar">Pesquisar</button>
+    </div> 
+    <div class="form-group col-md-6">
+        <label for="nome">Nome</label>
+        <input type="text" ng-model="fornecedor.nome" class="form-control" id="nome" >
+    
+        <label for="sobrenome">Sobrenome</label>
+        <input type="text" ng-model="fornecedor.sobrenome"class="form-control" id="sobrenome" >
+
+        <label for="cpfCnpj">Cpf/Cnpj</label>
+        <input type="text" maxlength="14" ng-model="fornecedor.cpfCnpj" class="form-control" id="cpfCnpj" >        
+    </div>
+
+    <div class="form-group col-md-6">
+        <label for="telefone">Telefones&nbsp;<span class="glyphicon glyphicon-plus botao-adicionar" data-target="#modalTelefone" data-toggle="modal"></span></label>
+        <ul class="list-group">
+            <li class="list-group-item" > &nbsp;
+                <span class="btn btn-sm" ng-repeat="telefone in telefones">
+                    <button type="text" class="btn" ng-click="editarTelefone(telefone)" >{{telefone.numero}}</button><span ng-click="excluirTelefone(telefone)" class="glyphicon glyphicon-remove"></span>
+                </span>
+            </li>
+        </ul>
+        <label for="endereco">Endereços&nbsp;<span class="glyphicon glyphicon-plus botao-adicionar" data-target="#modalEndereco" data-toggle="modal"></span></label>
+        <ul class="list-group">
+            <li class="list-group-item" > &nbsp;
+                <span class="btn btn-sm" ng-repeat="endereco in enderecos">
+                    <button type="text" class="btn" ng-click="editarEndereco(endereco)"ng-class="{enderecoPrincipal:endereco.principal}">{{endereco.descricao}}</button><span ng-click="excluirEndereco(endereco)" class="glyphicon glyphicon-remove"></span>
+                </span>
+            </li>
+        </ul>
+        <figcaption class="figure-caption"><span class="legenda">&nbsp;&nbsp;&nbsp;</span>&nbsp;Principal.</figcaption>
+    </div>  
+    
+</form>
+
+<telefone-modal></telefone-modal>
+
+<endereco-modal></endereco-modal>
+
+<div class="modal fade" id="modalPesquisaFornecedor" tabindex="-1" role="dialog" aria-labelledby="pesquisaFornecedorModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pesquisaFornecedorModalScrollableTitle">Fornecedores</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col" >Nome</th>
+                    <th scope="col">CPF/CNPJ</th>
+                    <th  >Endereço</th>
+                    <th scope="col">#</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="listaFornecedor in listaFornecedores" class="cursor">
+                    <td ng-click="editarFornecedor(listaFornecedor)">{{listaFornecedor.nome}}</td>
+                    <td ng-click="editarFornecedor(listaFornecedor)">{{listaFornecedor.cpfCnpj}}</td>
+                    <td ng-click="editarFornecedor(listaFornecedor)">
+                        <span ng-repeat="listaEndereco in listaFornecedor.enderecos">
+                            <b class="list-group-item enderecoPrincipal" ng-if="listaEndereco.principal">{{listaEndereco.descricao}} - {{listaEndereco.logradouro}}, {{listaEndereco.numero}}</b>
+                        </span>
+                    </td>
+                    <td><span ng-click="excluirFornecedor(listaFornecedor)" class="glyphicon glyphicon-remove"></span></td>
+                  </tr>
+                </tbody>
+              </table>
+            
+    </div>
+    <p class="mensagem-erro alert alert-danger" ng-show="mensagemPesquisarFornecedor.length" >{{mensagemPesquisarFornecedor}}</p>
+  </div>
+  <br>
+  
