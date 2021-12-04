@@ -1,4 +1,4 @@
-angular.module("projetoTecnico").factory("loginFactoryService", function ($http,config) {
+angular.module("login").factory("loginFactoryService", function ($http,config) {
     
         var _login = function (login) { 
                 var urlLogin = "/oauth/token?grant_type=password&username="+login.email+"&password="+login.senha;                

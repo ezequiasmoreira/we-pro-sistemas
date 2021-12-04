@@ -1,4 +1,4 @@
-angular.module("projetoTecnico").factory("loginFactorySpec", function () {
+angular.module("login").factory("loginFactorySpec", function () {
     
 	let _validarSenha = function ($scope) {
 		let usuario = $scope.usuario;
