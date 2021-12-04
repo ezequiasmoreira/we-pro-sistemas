@@ -1,8 +1,17 @@
-angular.module('login').controller('loginController', function($scope,loginFactoryService,loginFactorySpec,utilFactorySpec){
+angular.module('login').controller('loginController', function(
+    $scope,loginFactoryService,loginFactorySpec,utilFactorySpec,$http){
     
     $scope.login = {};
-	$scope.mensagem = '';   
+	$scope.mensagem = ''; 
 
+    $http.defaults.headers.common['Content-Type'] = "application/x-www-form-urlencoded";
+
+    if($scope.login){
+        $http.defaults.headers.common['Authorization'] = "Basic Y2xpZW50ZToxMjM=";        
+    }else{
+        $http.defaults.headers.common['Authorization'] = "Bearer " + token;
+    }       
+    
     $scope.login = function() {           
         loginFactoryService.login($scope.login).then(successCallback, errorCallback);	
         function successCallback(response){ 
