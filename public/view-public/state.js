@@ -1,7 +1,7 @@
 angular.module('public').config(function($stateProvider){  
     
     var index = {
-        name: 'index',
+        name: 'inicio',
         url: 'inicio',
         templateUrl:'view-public/index.html'
     }
@@ -48,6 +48,12 @@ angular.module('public').config(function($stateProvider){
         templateUrl:'view-public/contato/contact.html'
     }
 
+    var login = {
+        name: 'login',
+        url: 'login',
+        templateUrl:'view-public/login/login.html'
+    }
+
     $stateProvider.state(index);
     $stateProvider.state(sobre);
     $stateProvider.state(servico);
@@ -56,4 +62,5 @@ angular.module('public').config(function($stateProvider){
     $stateProvider.state(blog);
     $stateProvider.state(informativo);
     $stateProvider.state(contato);
+    $stateProvider.state(login);
 });

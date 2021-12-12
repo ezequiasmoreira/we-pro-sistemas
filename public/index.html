@@ -52,7 +52,7 @@
         <!-- Template Stylesheet -->
         <link href="view-public/css/style.css" rel="stylesheet">
     </head> 
-    <body ng-controller="controller" >
+    <body ng-controller="controller as siteCtrl" >
         <div class="wrapper">
             <!-- Top Bar Start -->
             <div class="top-bar">
@@ -119,22 +119,32 @@
 
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto">
-                                <a id='index' ui-sref="index" ui-sref-active="active" class="nav-item nav-link">Home</a>
-                                <a ui-sref="sobre" ui-sref-active="active" class="nav-item nav-link">About</a>
-                                <a ui-sref="servico" ui-sref-active="active" class="nav-item nav-link">Service</a>
-                                <a ui-sref="equipe" ui-sref-active="active" class="nav-item nav-link">Team</a>
-                                <a ui-sref="projeto" ui-sref-active="active" class="nav-item nav-link">Project</a>
+                                <a  id='index' 
+                                    ui-sref="inicio" ui-sref-active="active" 
+                                    class="nav-item nav-link">Home</a>
+                                <a  ui-sref="sobre" ui-sref-active="active"
+                                    class="nav-item nav-link">About</a>
+                                <a  ui-sref="servico" ui-sref-active="active" 
+                                    class="nav-item nav-link">Service</a>
+                                <a  ui-sref="equipe" ui-sref-active="active" 
+                                    class="nav-item nav-link">Team</a>
+                                <a  ui-sref="projeto" ui-sref-active="active" 
+                                    class="nav-item nav-link">Project</a>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                     <div class="dropdown-menu">
-                                        <a ui-sref="blog" ui-sref-active="active" class="dropdown-item">Blog Page</a>
-                                        <a ui-sref="informativo" ui-sref-active="active" class="dropdown-item">Informativo</a>
+                                        <a  ui-sref="blog" ui-sref-active="active" 
+                                            class="dropdown-item">Blog Page</a>
+                                        <a  ui-sref="informativo" ui-sref-active="active" 
+                                            class="dropdown-item">Informativo</a>
                                     </div>
                                 </div>
-                                <a  ui-sref="contato" ui-sref-active="active" class="nav-item nav-link active">Contact</a>
+                                <a  ui-sref="contato" ui-sref-active="active" 
+                                    class="nav-item nav-link active">Contact</a>
                             </div>
                             <div class="ml-auto">
-                                <a class="btn" href="#">Get A Quote</a>
+                                <a  ui-sref="login" ui-sref-active="active" 
+                                    class="btn">Login</a>
                             </div>
                         </div>
                     </nav>

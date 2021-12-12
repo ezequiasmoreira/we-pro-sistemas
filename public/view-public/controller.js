@@ -1,12 +1,20 @@
-angular.module('public').controller('controller', function(
-    utilFactorySpec,$http,$state,$urlRouter){
+(function () {
+    'use strict';
+    
+    angular.module('public')
+        .controller('controller', controller);    
         
-    var url = $urlRouter.location.replace('/','');
-    $state.go(url);
+    function controller(
+        $state,
+        $urlRouter){
 
-   if (($urlRouter.location === '/inicio') || ($urlRouter.location === '') || ($urlRouter.location === '/')){
-        setTimeout(function(){
-            angular.element('#index').triggerHandler('click');
-        });
+        var url = $urlRouter.location.replace('/','');
+        $state.go(url);      
+       
+        if (($urlRouter.location === '/inicio') || ($urlRouter.location === '') || ($urlRouter.location === '/')){
+            setTimeout(function(){
+                angular.element('#index').triggerHandler('click');
+            });
+        }       
     }
-});
+})();   
