@@ -1,43 +1,244 @@
 <!DOCTYPE html>
-<html lang="pt-br" ng-app="login">
+<html lang="pt-br" ng-app="public">
     <head>
-        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <title>Projeto técnico</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/index.css">
+     
+        <!--<script src="js/menu-public/menu.js"></script>-->        
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="js/lib/angular.min.js"></script>
+        <script src="js/lib/angular-route.min.js"></script>  
         <script src="js/lib/angular-ui-router.js"></script>
         <script src="bower_components/componentes/dist/componentes.min.js"></script>
-        <script src="js/services/login.module.js"></script>
-        <script src="js/specs/login-factory-spec.js"></script>
+      
         <script src="js/specs/util-factory-spec.js"></script>        
-        <script src="js/controllers/login-controller.js"></script>
-        <script src="js/services/login-factory-service.js"></script>
-        <script src="js/config/config-url.js"></script>
-        <script src="js/lib/angular-route.min.js"></script>  
-    </head>
-<body ng-controller="loginController">
-    <h1 class="text-center">WE-PRO SISTEMAS</h1>
-    <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <h1 class="text-center login-title">Faça login para continuar</h1>
-            <div class="account-wall">
-                <img class="profile-img" src="img/perfil.png"
-                    alt="">
-                <form class="form-signin" ng-submit="login()">
-                <input type="text" ng-model="login.email"class="form-control" placeholder="Email" required autofocus>
-                <input type="password" ng-model="login.senha" class="form-control" placeholder="Senha" required>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
-                    Logar</button>
-                </form>
-            </div>            
-            <a href="/usuario/cadastro.html" class="text-center new-account">Criar uma conta </a>
-            <div class="form-group"></div>
-                <p ng-show="mensagem.length" class="alert alert-danger">{{mensagem}}</p>
+        
+        <!--<script src="login/login.module.js"></script>
+        <script src="login/login-factory-spec.js"></script>        
+        <script src="login/login-factory-service.js"></script>
+        <script src="login/login-controller.js"></script>
+        <script src="login/login.provider.js"></script>-->        
+
+        <script src="js/config/config-url.js"></script>  
+
+        <!--Depências do módulo publico-->
+        <script src="view-public/public.module.js"></script>
+        <script src="view-public/controller.js"></script>
+        <script src="view-public/state.js"></script>
+
+        <!--dependencias do template-->
+        <meta charset="utf-8">
+        <title>Builderz - Construction Company Website Template</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Construction Company Website Template" name="keywords">
+        <meta content="Construction Company Website Template" name="description">
+
+        <!-- Favicon -->
+        <link href="view-public/img/favicon.ico" rel="icon">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="view-public/lib/flaticon/font/flaticon.css" rel="stylesheet"> 
+        <link href="view-public/lib/animate/animate.min.css" rel="stylesheet">
+        <link href="view-public/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="view-public/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="view-public/lib/slick/slick.css" rel="stylesheet">
+        <link href="view-public/lib/slick/slick-theme.css" rel="stylesheet">
+        <!-- Template Stylesheet -->
+        <link href="view-public/css/style.css" rel="stylesheet">
+    </head> 
+    <body ng-controller="controller" >
+        <div class="wrapper">
+            <!-- Top Bar Start -->
+            <div class="top-bar">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-lg-4 col-md-12">
+                            <div class="logo">
+                                <a href="view-public/index.html">
+                                    <h1>Builderz</h1>
+                                    <!-- <img src="img/logo.jpg" alt="Logo"> -->
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-7 d-none d-lg-block">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="top-bar-item">
+                                        <div class="top-bar-icon">
+                                            <i class="flaticon-calendar"></i>
+                                        </div>
+                                        <div class="top-bar-text">
+                                            <h3>Opening Hour</h3>
+                                            <p>Mon - Fri, 8:00 - 9:00</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="top-bar-item">
+                                        <div class="top-bar-icon">
+                                            <i class="flaticon-call"></i>
+                                        </div>
+                                        <div class="top-bar-text">
+                                            <h3>Call Us</h3>
+                                            <p>+012 345 6789</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="top-bar-item">
+                                        <div class="top-bar-icon">
+                                            <i class="flaticon-send-mail"></i>
+                                        </div>
+                                        <div class="top-bar-text">
+                                            <h3>Email Us</h3>
+                                            <p>info@example.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- Top Bar End -->
+
+            <!-- Nav Bar Start -->
+            <div class="nav-bar">
+                <div class="container-fluid">
+                    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+                        <a href="#" class="navbar-brand">MENU</a>
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                            <div class="navbar-nav mr-auto">
+                                <a id='index' ui-sref="index" ui-sref-active="active" class="nav-item nav-link">Home</a>
+                                <a ui-sref="sobre" ui-sref-active="active" class="nav-item nav-link">About</a>
+                                <a ui-sref="servico" ui-sref-active="active" class="nav-item nav-link">Service</a>
+                                <a ui-sref="equipe" ui-sref-active="active" class="nav-item nav-link">Team</a>
+                                <a ui-sref="projeto" ui-sref-active="active" class="nav-item nav-link">Project</a>
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                                    <div class="dropdown-menu">
+                                        <a ui-sref="blog" ui-sref-active="active" class="dropdown-item">Blog Page</a>
+                                        <a ui-sref="informativo" ui-sref-active="active" class="dropdown-item">Informativo</a>
+                                    </div>
+                                </div>
+                                <a  ui-sref="contato" ui-sref-active="active" class="nav-item nav-link active">Contact</a>
+                            </div>
+                            <div class="ml-auto">
+                                <a class="btn" href="#">Get A Quote</a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- Nav Bar End -->
+            
+            <ui-view></ui-view> 
+
+
+            <!-- Footer Start -->
+            <div class="footer wow fadeIn" data-wow-delay="0.3s">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="footer-contact">
+                                <h2>Office Contact</h2>
+                                <p><i class="fa fa-map-marker-alt"></i>123 Street, New York, USA</p>
+                                <p><i class="fa fa-phone-alt"></i>+012 345 67890</p>
+                                <p><i class="fa fa-envelope"></i>info@example.com</p>
+                                <div class="footer-social">
+                                    <a href=""><i class="fab fa-twitter"></i></a>
+                                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a href=""><i class="fab fa-youtube"></i></a>
+                                    <a href=""><i class="fab fa-instagram"></i></a>
+                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="footer-link">
+                                <h2>Services Areas</h2>
+                                <a href="">Building Construction</a>
+                                <a href="">House Renovation</a>
+                                <a href="">Architecture Design</a>
+                                <a href="">Interior Design</a>
+                                <a href="">Painting</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="footer-link">
+                                <h2>Useful Pages</h2>
+                                <a href="">About Us</a>
+                                <a href="">Contact Us</a>
+                                <a href="">Our Team</a>
+                                <a href="">Projects</a>
+                                <a href="">Testimonial</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="newsletter">
+                                <h2>Newsletter</h2>
+                                <p>
+                                    Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu
+                                </p>
+                                <div class="form">
+                                    <input class="form-control" placeholder="Email here">
+                                    <button class="btn">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container footer-menu">
+                    <div class="f-menu">
+                        <a href="">Terms of use</a>
+                        <a href="">Privacy policy</a>
+                        <a href="">Cookies</a>
+                        <a href="">Help</a>
+                        <a href="">FQAs</a>
+                    </div>
+                </div>
+                <div class="container copyright">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>&copy; <a href="#">Your Site Name</a>, All Right Reserved.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+
+            <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
         </div>
-    </div>
-</body>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="view-public/lib/easing/easing.min.js"></script>
+        <script src="view-public/lib/wow/wow.min.js"></script>
+        <script src="view-public/lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="view-public/lib/isotope/isotope.pkgd.min.js"></script>
+        <script src="view-public/lib/lightbox/js/lightbox.min.js"></script>
+        <script src="view-public/lib/waypoints/waypoints.min.js"></script>
+        <script src="view-public/lib/counterup/counterup.min.js"></script>
+        <script src="view-public/lib/slick/slick.min.js"></script>
+        
+        <!-- Contact Javascript File -->
+        <script src="view-public/mail/jqBootstrapValidation.min.js"></script>
+        <script src="view-public/mail/contact.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="view-public/js/main.js"></script>    
+    </body>
 </html>
