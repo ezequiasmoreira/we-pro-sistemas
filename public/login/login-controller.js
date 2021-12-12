@@ -1,9 +1,14 @@
-angular.module('login').controller('loginController', function(
+(function () {
+    'use strict';
+angular.module('login')
+.controller('loginController', loginController);
+
+function loginController (
     $scope,loginFactoryService,loginFactorySpec,utilFactorySpec,$http,$state){
     
     $scope.login = {};
 	$scope.mensagem = ''; 
-
+    
     $http.defaults.headers.common['Content-Type'] = "application/x-www-form-urlencoded";
 
     if($scope.login){
@@ -55,4 +60,5 @@ angular.module('login').controller('loginController', function(
             return;
         }           
     };
-});
+}
+})(); 

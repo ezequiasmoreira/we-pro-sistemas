@@ -1,8 +1,5 @@
 
 (function () {
     'use strict';
-    angular.module('public', ['componentes','ngRoute','ui.router'])
-    .config(function($routeProvider){  
-    
-    });
+    angular.module('public', ['componentes','login','ngRoute','ui.router']);
 })(); 

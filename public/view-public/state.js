@@ -51,7 +51,8 @@ angular.module('public').config(function($stateProvider){
     var login = {
         name: 'login',
         url: 'login',
-        templateUrl:'view-public/login/login.html'
+        templateUrl:'view-public/login/login.html',
+        controller: 'loginController',
     }
 
     $stateProvider.state(index);
