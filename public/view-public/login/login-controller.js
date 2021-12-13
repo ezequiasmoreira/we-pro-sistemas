@@ -30,35 +30,5 @@ function loginController (
             return;
         }       
     };
-
-    $scope.cadastrarUsuario = function() {             
-        try {
-            var usuario =  $scope.usuario;
-
-            if (!loginFactorySpec.validarFormulario($scope.formulario)) return;    
-            loginFactorySpec.validarSenha($scope)
-            utilFactorySpec.validarEmail(usuario.email,$scope);
-
-            loginFactoryService.cadastrar(usuario).then(successCallback, errorCallback);
-
-            function successCallback(response){    
-                window.location.href = '../../index.html'; 
-            }
-
-            function errorCallback(response){ 
-                var  mensagem = "Erro ao cadastrar o usuário"
-                if (response.data ){  
-                    loginFactoryService.atribuirFocoException(response.data.cause,$scope); 
-                    mensagem = response.data.message;
-                }           
-                $scope.mensagem = mensagem;
-                return;
-            }         
-
-        }catch (exception) {
-            $scope.mensagem = exception
-            return;
-        }           
-    };
 }
 })(); 

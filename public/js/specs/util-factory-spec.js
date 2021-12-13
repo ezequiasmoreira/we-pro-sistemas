@@ -1,9 +1,9 @@
 angular.module("componentes").factory("utilFactorySpec", function () {    
 	
-	let _validarEmail = function (email, $scope) { 		 
-		let regex = /\S+@\S+\.\S+/;
+	var _validarEmail = function (email, $scope) { 		 
+		var regex = /\S+@\S+\.\S+/;
 		if(!regex.test(email)){
-            if ($scope) $scope.$broadcast('validarEmail');
+            if ($scope) angular.element('#email').focus();
 			throw "Email inválido";
 		}
 		return true;

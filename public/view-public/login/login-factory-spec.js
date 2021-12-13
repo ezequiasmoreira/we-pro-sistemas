@@ -1,15 +1,15 @@
 angular.module("login").factory("loginFactorySpec", function () {
     
-	let _validarSenha = function ($scope) {
+	var _validarSenha = function ($scope) {
 		let usuario = $scope.usuario;
         if (usuario.senha != usuario.confirmaSenha){
-			$scope.$broadcast('validarSenha');
+			angular.element('#senha').focus();
 			throw "Senha não confere";
 		}	
 		return true;
 	};
 
-	let _validarFormulario = function (formulario) { 		 
+	var _validarFormulario = function (formulario) { 		 
 		return (!formulario.$valid) ? false  : true;
 	};
 	

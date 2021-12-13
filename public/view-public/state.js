@@ -55,6 +55,14 @@ angular.module('public').config(function($stateProvider){
         controller: 'loginController',
     }
 
+    var usuario = {
+        name: 'usuario-cadastro',
+        url: 'usuario-cadastro',
+        templateUrl:'view-public/usuario/cadastro.html',
+        controller: 'usuarioController',
+        controllerAs: 'vm',
+    }
+
     $stateProvider.state(index);
     $stateProvider.state(sobre);
     $stateProvider.state(servico);
@@ -64,4 +72,5 @@ angular.module('public').config(function($stateProvider){
     $stateProvider.state(informativo);
     $stateProvider.state(contato);
     $stateProvider.state(login);
+    $stateProvider.state(usuario);
 });
